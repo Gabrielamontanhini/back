@@ -16,7 +16,9 @@ export async function postImageToUserDB(image, id){
 }
 
 export async function getAllUsersDB(){
-    const result = await db.query(`SELECT id, nome, nickname FROM users;`)
+    const result = await db.query(`SELECT users.id, users.nome, users.nickname, users_image.url
+    FROM users
+    LEFT JOIN users_image ON users.id = users_image.id_user;`)
     return result
 }
 
