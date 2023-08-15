@@ -26,6 +26,12 @@ export async function editUserNicknameDB(nickname, id){
     return result
 }
 
+export async function editUserImageDB(image, id){
+    const result = await db.query(`UPDATE users_image
+    SET url = $1 WHERE id_user=$2;`,[image, id])
+    return result
+}
+
 export async function deleteUserByIdDB(id){
     const result = await db.query(`DELETE FROM users
     WHERE id = $1;`, [id])

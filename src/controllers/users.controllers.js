@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid"
 import bcrypt from "bcrypt"
-import { deleteUserByIdDB, editUserNicknameDB, getAllUsersDB, postImageToUserDB, postUserDB } from "../repositories/user.repositories.js"
+import { deleteUserByIdDB, editUserImageDB, editUserNicknameDB, getAllUsersDB, postImageToUserDB, postUserDB } from "../repositories/user.repositories.js"
 
 export async function postUser(req, res) {
     const { nome, nickname, senha } = req.body
@@ -43,6 +43,17 @@ return res.sendStatus(200)
     } catch (err) {
         res.status(500).send(err.message)
     }
+}
+
+export async function editUserImage(req, res){
+    const { id } = req.params;
+    const {image}=req.body
+    try{
+        await editUserImageDB( image, id)
+        return res.sendStatus(200)
+            } catch (err) {
+                res.status(500).send(err.message)
+            }
 }
 
 export async function deleteUserById(req, res){
