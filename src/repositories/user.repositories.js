@@ -8,6 +8,12 @@ export async function postUserDB(body, hash){
     [nome, nickname, hash])
     return result
 }
+export async function postImageToUserDB(image, id){
+    const result = await db.query(`INSERT INTO 
+    users_image (id_user, url)
+    VALUES ($1, $2);`, [id, image])
+    return result
+}
 
 export async function getAllUsersDB(){
     const result = await db.query(`SELECT id, nome, nickname FROM users;`)
