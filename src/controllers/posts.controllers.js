@@ -1,4 +1,4 @@
-import { editPostByIdDB, getPostsDB, postPostDB } from "../repositories/posts.repositories.js"
+import { deletePostByIdDB, editPostByIdDB, getPostsDB, postPostDB } from "../repositories/posts.repositories.js"
 
 
 
