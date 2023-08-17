@@ -4,8 +4,7 @@ export async function postUserDB(body, hash){
     const {nome, nickname} = body
     const result = await db.query(`INSERT INTO users 
     (nome, nickname, senha)
-    VALUES ($1, $2, $3);`,
-    [nome, nickname, hash])
+    VALUES ($1, $2, $3);`, [nome, nickname, hash])
     return result
 }
 export async function postImageToUserDB(image, id){
