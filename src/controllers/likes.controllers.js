@@ -15,7 +15,7 @@ export async function getLikesById(req, res){
     const {id_post}=req.params
     try{
 const likesOfThisPost = await getLikesByIdDB(id_post)
-return res.send(likesOfThisPost[0].length).status(200)
+return res.send(likesOfThisPost[0]).status(200)
     }catch (err) {
         res.status(500).send(err.message)
     }
