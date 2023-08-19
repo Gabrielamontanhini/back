@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid"
 import bcrypt from "bcrypt"
 import { deleteUserByIdDB, editUserImageDB, editUserNicknameDB, getAllUsersDB, postImageToUserDB, postUserDB } from "../repositories/user.repositories.js"
 
@@ -33,6 +32,7 @@ return res.send(allUsers.rows).status(200)
         res.status(500).send(err.message)
     }
 }
+
 
 export async function editUserNickname(req, res){
     const { id } = req.params;
