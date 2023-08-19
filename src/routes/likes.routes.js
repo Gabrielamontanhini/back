@@ -3,7 +3,7 @@ import { deleteLikeInPost, getLikesById, postLike } from "../controllers/likes.c
 
 const likesRoutes = Router()
 
-likesRoutes.post("/like/:id", postLike)
+likesRoutes.post("/like/post", postLike)
 likesRoutes.get("/like/:id", getLikesById)
 likesRoutes.delete("/like/:id", deleteLikeInPost)
 
