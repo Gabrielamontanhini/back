@@ -41,10 +41,10 @@ return res.sendStatus(200)
 }
 
 export async function deleteThisLike(req, res){
-    const {id}=req.body
+    const { id }=req.body
     try{
 await deleteThisLikeDB(id)
-return res.sendStatus(200)
+return res.send(id).Status(200)
     }catch (err) {
         res.status(500).send(err.message)
     }
