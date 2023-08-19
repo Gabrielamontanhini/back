@@ -3,12 +3,12 @@ import { db } from "../database/database.connection.js";
 export async function postLikeDB(id_post, id_owner, id_liker){
     const result = await db.query(`INSERT INTO likes_posts 
     (id_post, id_owner, id_liker) VALUES
-    ($1, $2, $3),;`, [id_post, id_owner, id_liker])
+    ($1, $2, $3);`, [id_post, id_owner, id_liker])
         return result
 }
 
 export async function getLikesByIdDB(id_post){
-    const result = await db.query(`SELECT * FROM likes_posts WHERE id_post = 5;`)
+    const result = await db.query(`SELECT * FROM likes_posts WHERE id_post = $1;`, [id_post])
     return result
 }
 
