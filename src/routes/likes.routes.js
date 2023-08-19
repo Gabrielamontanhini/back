@@ -7,6 +7,6 @@ likesRoutes.post("/like/post", postLike)
 likesRoutes.get("/like/:id", getLikesById)
 likesRoutes.get("/likes", getAllLikes)
 likesRoutes.delete("/like/:id", deleteLikeInPost)
-likesRoutes.delete("/like/delete", deleteThisLike)
+likesRoutes.delete("/dislike/delete", deleteThisLike)
 
 export default likesRoutes
