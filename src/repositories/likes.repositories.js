@@ -17,3 +17,8 @@ export async function deleteLikeInPostDB(id_post, id_liker){
     likes_posts WHERE 
     id_post = $1 AND id_liker = $2;`, [id_post, id_liker])
 }
+
+export async function deleteThisLikeDB(id){
+    const result = await db.query(`DELETE FROM likes_posts WHERE id=$1;`, [id])
+    return result
+}
