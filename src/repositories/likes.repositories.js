@@ -8,7 +8,7 @@ export async function postLikeDB(id_post, id_owner, id_liker){
 }
 
 export async function getLikesByIdDB(id_post){
-    const result = await db.query(`SELECT * FROM likes_posts WHERE id_post = $1;`, [id_post])
+    const result = await db.query(`SELECT * FROM likes_posts`)
     return result
 }
 
