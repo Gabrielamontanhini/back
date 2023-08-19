@@ -13,7 +13,11 @@ export async function getLikesByIdDB(id_post){
 }
 
 export async function getAllLikesDB(){
-    const result = await db.query(`SELECT * FROM likes_posts;`)
+    const result = await db.query(`SELECT lp.*, u_liker.nickname AS liker_nickname, u_owner.nickname AS owner_nickname
+    FROM likes_posts AS lp
+    JOIN users AS u_liker ON lp.id_liker = u_liker.id
+    JOIN users AS u_owner ON lp.id_owner = u_owner.id;
+    `)
     return result
 }
 
