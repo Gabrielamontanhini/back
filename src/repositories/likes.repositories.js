@@ -12,6 +12,11 @@ export async function getLikesByIdDB(id_post){
     return result
 }
 
+export async function getAllLikesDB(){
+    const result = await db.query(`SELECT * FROM likes_posts;`)
+    return result
+}
+
 export async function deleteLikeInPostDB(id_post, id_liker){
     const result = await db.query(`DELETE FROM 
     likes_posts WHERE 

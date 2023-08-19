@@ -1,4 +1,4 @@
-import { deleteLikeInPostDB, deleteThisLikeDB, getLikesByIdDB, postLikeDB } from "../repositories/likes.repositories.js"
+import { deleteLikeInPostDB, deleteThisLikeDB, getAllLikesDB, getLikesByIdDB, postLikeDB } from "../repositories/likes.repositories.js"
 
 export async function postLike(req, res) {
     const {id_post,id_owner, id_liker}=req.body
@@ -15,6 +15,15 @@ export async function getLikesById(req, res){
     try{
 const likesOfThisPost = await getLikesByIdDB(id_post)
 return res.send(likesOfThisPost.rows).status(200)
+    }catch (err) {
+        res.status(500).send(err.message)
+    }
+}
+
+export async function getAllLikes(req, res){
+    try{
+const allLikesPosts = await getAllLikesDB()
+return res.send(allLikesPosts.rows).status(200)
     }catch (err) {
         res.status(500).send(err.message)
     }
