@@ -5,17 +5,17 @@ import { getUserByNickname, iniciarSessaoDB } from "../repositories/sessions.rep
 
 export async function postLogin(req, res){
     const {nickname, senha}=req.body
-    try{
+        try{
         const thisUser = await getUserByNickname(nickname)
         if (thisUser.rowCount == 0) return res.send({ message: "Não encontramos esse usuario!" })
-    }
-    catch (err) {
+        }
+        catch (err) {
         return res.status(500).send("Primeiro catch " + err)
-    }
+        }
     try{
         const hash = bcrypt.hashSync(senha, 10)
         let testPassword = thisUser.rows[0].senha
-        const correctPassword = bcrypt.compare(hash.toString(),testPassword.toString(), function(err, result){
+        bcrypt.compare(hash,testPassword, function(err, result){
             if (err) {
             return res.status(200).send(err + testPassword)            }
             if (!result) {
@@ -24,7 +24,7 @@ export async function postLogin(req, res){
         })
     }
     catch (err) {
-        return res.status(500).send("correção de senha" + err)
+        return res.status(500).send(`erro ${senha} ` + err)
     }
     try{
         const token = uuid()
