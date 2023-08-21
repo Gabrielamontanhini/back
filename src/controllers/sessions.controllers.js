@@ -6,7 +6,8 @@ import { getUserByNickname, iniciarSessaoDB } from "../repositories/sessions.rep
 export async function postLogin(req, res){
     const {nickname, senha}=req.body
     try{
-        return res.status(200).send(typeof(senha))
+        const hash = bcrypt.hashSync(senha, 10)
+        return res.status(200).send(typeof(hash), typeof(senha))
     }
     catch (err) {
         return res.status(500).send(err)
