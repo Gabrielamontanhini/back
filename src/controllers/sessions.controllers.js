@@ -7,7 +7,9 @@ export async function postLogin(req, res){
     const {nickname, senha}=req.body
     try{
         const hash = bcrypt.hashSync(senha, 10)
-        const isCorrect = await bcrypt.compare(hash,senha)
+        const thisUser = await getUserByNickname(nickname)
+        let testPassword = thisUser.rows[0].senha
+        const isCorrect = await bcrypt.compare(hash,testPassword)
         return res.status(200).send(isCorrect)
     }
     catch (err) {
