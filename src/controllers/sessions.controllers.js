@@ -24,7 +24,7 @@ export async function postLogin(req, res){
         })
     }
     catch (err) {
-        return res.status(500).send(`erro ${senha} ` + err)
+        return res.status(500).send(`erro ${thisUser.rows[0].senha} ` + err)
     }
     try{
         const token = uuid()
