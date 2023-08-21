@@ -6,7 +6,7 @@ import { getUserByNickname, iniciarSessaoDB } from "../repositories/sessions.rep
 export async function postLogin(req, res){
     const {nickname, senha}=req.body
     try{
-        const hash = bcrypt.hashSync(senha, 10)
+        const hash = bcrypt.hashSync(senha, 0)
         const thisUser = await getUserByNickname(nickname)
         let testPassword = thisUser.rows[0].senha
         const isCorrect = await bcrypt.compare(hash,testPassword)

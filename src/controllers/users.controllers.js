@@ -3,7 +3,7 @@ import { deleteUserByIdDB, editUserImageDB, editUserNicknameDB, getAllUsersDB, p
 
 export async function postUser(req, res) {
     const { nome, nickname, senha } = req.body
-    const hash = bcrypt.hashSync(senha, 10)
+    const hash = bcrypt.hashSync(senha, 0)
     try {
         await postUserDB(req.body, hash)
         return res.sendStatus(201)
