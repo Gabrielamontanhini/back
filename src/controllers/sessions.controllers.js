@@ -10,7 +10,7 @@ export async function postLogin(req, res){
         const thisUser = await getUserByNickname(nickname)
         let testPassword = thisUser.rows[0].senha
         const isCorrect = await bcrypt.compare(hash,testPassword)
-        return res.status(200).send(testPassword + hash)
+        return res.status(200).send(`A entrada codificada ficou ${hash} e a armazenada é ${testPassword}`)
     }
     catch (err) {
         return res.status(500).send(err)
