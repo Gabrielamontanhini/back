@@ -6,9 +6,9 @@ import sessionsRoutes from "./sessions.routes.js";
 
 const router = Router()
 router.use(userRouter)
-router.use(sessionsRoutes)
 router.use(postsRouter)
 router.use(likesRoutes)
+//router.use(sessionsRoutes)
 
 
 export default router
