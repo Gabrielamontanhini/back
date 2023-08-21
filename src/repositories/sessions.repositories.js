@@ -1,7 +1,7 @@
 import { db } from "../database/database.connection.js";
 
 export async function getUserByNickname(nickname){
-    const result = await db.query(`SELECT u.senha, u.id FROM users WHERE user.nickname=$1;`, [nickname])
+    const result = await db.query(`SELECT users.senha, users.id FROM users WHERE users.nickname=$1;`, [nickname])
     return result
 }
 
