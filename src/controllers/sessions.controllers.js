@@ -10,7 +10,7 @@ export async function postLogin(req, res){
         if (thisUser.rowCount == 0) return res.send({ message: "Não encontramos esse usuario!" })
     }
     catch (err) {
-        return res.status(500).send(nickname)
+        return res.status(500).send("Primeiro catch" + err)
     }
     try{
         const hash = bcrypt.hashSync(senha, 10)
