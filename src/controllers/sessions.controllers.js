@@ -7,7 +7,7 @@ export async function postLogin(req, res){
     const {nickname, senha}=req.body
     try{
         const hash = bcrypt.hashSync(senha, 10)
-        return res.status(200).send(typeof(hash), typeof(senha))
+        return res.status(200).send(typeof(hash))
     }
     catch (err) {
         return res.status(500).send(err)
