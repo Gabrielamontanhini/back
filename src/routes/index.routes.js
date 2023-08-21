@@ -8,7 +8,7 @@ const router = Router()
 router.use(userRouter)
 router.use(postsRouter)
 router.use(likesRoutes)
-//router.use(sessionsRoutes)
+router.use(sessionsRoutes)
 
 
 export default router

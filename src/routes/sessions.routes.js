@@ -7,4 +7,4 @@ sessionsRouter.post("/login", postLogin)
 sessionsRouter.delete("/logout", logOut)
 
 
-export default sessionsRouter()
+export default sessionsRouter
