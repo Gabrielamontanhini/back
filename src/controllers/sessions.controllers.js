@@ -6,11 +6,11 @@ import { getUserByNickname, iniciarSessaoDB } from "../repositories/sessions.rep
 export async function postLogin(req, res){
     const {nickname, senha}=req.body
     try{
-        const hash = bcrypt.hashSync(senha, 0)
+     //   const hash = bcrypt.hashSync(senha, 0)
         const thisUser = await getUserByNickname(nickname)
         let testPassword = thisUser.rows[0].senha
-        const isCorrect = await bcrypt.compare(hash,testPassword)
-        return res.status(200).send(`A entrada codificada ficou ${hash} e a armazenada é ${testPassword}`)
+        const isCorrect = await bcrypt.compare(senha,testPassword)
+        return res.status(200).send(`A entrada codificada ficou ${senha} e a armazenada é ${testPassword}`)
     }
     catch (err) {
         return res.status(500).send(err)
