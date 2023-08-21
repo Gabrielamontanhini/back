@@ -15,7 +15,7 @@ export async function postLogin(req, res){
     try{
         const hash = bcrypt.hashSync(senha, 10)
         let testPassword = thisUser.rows[0].senha
-        const correctPassword = bcrypt.compare(hash,testPassword.toString())
+        const correctPassword = bcrypt.compare(hash.toString(),testPassword.toString())
         if (!correctPassword) return res.status(401).send({ message: "Senha incorreta!" })
     }
     catch (err) {
