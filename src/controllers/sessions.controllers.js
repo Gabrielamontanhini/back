@@ -15,15 +15,18 @@ export async function postLogin(req, res){
     try{
         const hash = bcrypt.hashSync(senha, 10)
         let testPassword = thisUser.rows[0].senha
-        const correctPassword = bcrypt.compare(hash.toString(),testPassword.toString())
-        if (!correctPassword) return res.status(401).send({ message: "Senha incorreta!" })
+        const correctPassword = bcrypt.compare(hash.toString(),testPassword.toString(), function(err, result){
+            if (err) {
+            return res.status(200).send(err + testPassword)            }
+            if (!result) {
+                return res.status(401).send({ message: "Senha incorreta!" })
+            } 
+        })
     }
     catch (err) {
         return res.status(500).send("correção de senha" + err)
     }
     try{
-        
-       
         const token = uuid()
         await iniciarSessaoDB(thisUser.rows[0].id, token)
         return res.status(201).send(token)
