@@ -5,7 +5,17 @@ import { getUserByNickname, iniciarSessaoDB } from "../repositories/sessions.rep
 
 export async function postLogin(req, res){
     const {nickname, senha}=req.body
-        try{
+    try{
+        return res.status(200).send(typeof(senha))
+    }
+    catch (err) {
+        return res.status(500).send(err)
+    }
+}
+
+
+
+{/** try{
         const thisUser = await getUserByNickname(nickname)
         if (thisUser.rowCount == 0) return res.send({ message: "Não encontramos esse usuario!" })
         }
@@ -23,8 +33,8 @@ export async function postLogin(req, res){
     }
     catch (err) {
         return res.status(500).send(`erro ${thisUser.rows[0].senha} ` + err)
-    }
-}
+    } */}
+
 
 export async function logOut(req, res){
     const {token} = req.headers
