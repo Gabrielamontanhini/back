@@ -11,8 +11,9 @@ export async function postLogin(req, res){
         let testPassword = thisUser.rows[0].senha
         
         if (senha === testPassword){
+            const token = uuid()
             return res.status(200).send(`A entrada codificada ficou ${senha} , typeof ${typeof(senha)}
-            e a armazenada é ${testPassword}, com typeof ${typeof(testPassword)}. Desse modo o isCorret é IGUAL`)
+            e a armazenada é ${testPassword}, com typeof ${typeof(testPassword)}. Desse modo o isCorret é IGUAL. Seu token é ${token}`)
         } else {
             return res.status(200).send(`${senha === testPassword} deve dar false ne`)
         }
