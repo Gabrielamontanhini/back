@@ -12,8 +12,8 @@ export async function postLogin(req, res){
         
         if (senha === testPassword){
             const token = uuid()
-            return res.status(200).send(`A entrada codificada ficou ${senha} , typeof ${typeof(senha)}
-            e a armazenada é ${testPassword}, com typeof ${typeof(testPassword)}. Desse modo o isCorret é IGUAL. Seu token é ${token}`)
+            await iniciarSessaoDB(thisUser.rows[0].id, token)
+        return res.status(201).send(token)
         } else {
             return res.status(200).send(`${senha === testPassword} deve dar false ne`)
         }
