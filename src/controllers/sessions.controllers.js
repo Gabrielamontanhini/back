@@ -27,7 +27,7 @@ export async function postLogin(req, res){
 export async function getSessions(req, res){
     try{
         const sessionsNow = await getSessionsDB()
-        return res.status(200).send(sessionsNow)
+        return res.status(200).send(sessionsNow.rows)
     }
     catch (err) {
         return res.status(501).send(err + "catchcontroller")

@@ -12,7 +12,9 @@ export async function iniciarSessaoDB(id, token){
 }
 
 export async function getSessionsDB(){
-    const result = await db.query(`SELECT * FROM sessions;`)
+    const result = await db.query(`SELECT sessions.id, sessions.id_user, sessions.token, users.nickname
+    FROM sessions
+    JOIN users ON sessions.id_user = users.id;`)
     return result
 }
 
