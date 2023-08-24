@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { logOut, postLogin } from "../controllers/sessions.controllers.js";
+import { getSessions, logOut, postLogin } from "../controllers/sessions.controllers.js";
 
 const sessionsRouter = Router()
 
 sessionsRouter.post("/login", postLogin)
+sessionsRouter.get("/sessions", getSessions)
 sessionsRouter.delete("/logout", logOut)
 
 

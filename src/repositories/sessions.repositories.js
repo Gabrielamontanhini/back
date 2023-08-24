@@ -11,6 +11,9 @@ export async function iniciarSessaoDB(id, token){
     return result
 }
 
+export async function getSessionsDB(){
+    const result = await db.query(`SELECT * FROM sessions`)
+}
 
 export async function deleteSessionByToken(token){
     const result = await db.query(`DELETE FROM session WHERE token=$1;`, [token])
