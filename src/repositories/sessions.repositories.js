@@ -12,7 +12,7 @@ export async function iniciarSessaoDB(id, token){
 }
 
 export async function getSessionsDB(){
-    const result = await db.query(`SELECT * FROM sessions`)
+    const result = await db.query(`SELECT * FROM sessions;`)
 }
 
 export async function deleteSessionByToken(token){
